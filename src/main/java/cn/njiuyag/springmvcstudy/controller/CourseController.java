@@ -2,10 +2,9 @@ package cn.njiuyag.springmvcstudy.controller;
 
 import cn.njiuyag.springmvcstudy.model.Course;
 import cn.njiuyag.springmvcstudy.service.CourseService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,12 +23,11 @@ import java.util.Map;
 /**
  * @author hjx
  */
+@Slf4j
 @Controller
 @RequestMapping("/courses")
 public class CourseController {
 	
-	private static Logger log = LoggerFactory.getLogger(CourseController.class);
-
 	private final CourseService courseService;
 
 	public CourseController(CourseService courseService) {
@@ -79,7 +77,8 @@ public class CourseController {
 		
 		//在此进行业务操作，比如数据库持久化
 		course.setCourseId(123);
-		return "redirect:view2/"+course.getCourseId();
+		String s = "redirect:view2/" + course.getCourseId();
+		return s;
 	}
 	
 	@RequestMapping(value="/upload", method=RequestMethod.GET)
@@ -129,7 +128,7 @@ public class CourseController {
 	@RequestMapping(value="/jsontype/{courseId}",method=RequestMethod.GET)
 	public ResponseEntity<Course> getCourseInJson2(@PathVariable Integer courseId){
 		Course course =   courseService.getCoursebyId(courseId);		
-		return new ResponseEntity<Course>(course, HttpStatus.OK);
+		return new ResponseEntity<>(course, HttpStatus.OK);
 	}
 	
 	

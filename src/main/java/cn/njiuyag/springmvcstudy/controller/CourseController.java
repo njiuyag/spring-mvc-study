@@ -25,7 +25,7 @@ import java.util.Map;
  */
 @Slf4j
 @Controller
-@RequestMapping("/courses")
+@RequestMapping("/course")
 public class CourseController {
 	
 	private final CourseService courseService;
@@ -34,33 +34,27 @@ public class CourseController {
 		this.courseService = courseService;
 	}
 
-	@RequestMapping(value="/view", method=RequestMethod.GET)
-	public String viewCourse(@RequestParam("courseId") Integer courseId,
-			Model model) {
-
+	@RequestMapping(value="/overView", method=RequestMethod.GET)
+	public String viewCourse(@RequestParam("courseId") Integer courseId, Model model) {
 		log.debug("In viewCourse, courseId = {}", courseId);
-		Course course = courseService.getCoursebyId(courseId);
+		Course course = courseService.getCourse(courseId);
 		model.addAttribute(course);
 		return "course_overview";
 	}
 
-	@RequestMapping("/view2/{courseId}")
-	public String viewCourse2(@PathVariable("courseId") Integer courseId,
-			Map<String, Object> model) {
-		
+	@RequestMapping("/overView/{courseId}")
+	public String viewCourse1(@PathVariable("courseId") Integer courseId, Map<String, Object> model) {
 		log.debug("In viewCourse2, courseId = {}", courseId);
-		Course course = courseService.getCoursebyId(courseId);
+		Course course = courseService.getCourse(courseId);
 		model.put("course",course);
 		return "course_overview";
 	}
 
-	@RequestMapping("/view3")
-	public String viewCourse3(HttpServletRequest request) {
-		
+	@RequestMapping("/overView2")
+	public String viewCourse2(HttpServletRequest request) {
 		Integer courseId = Integer.valueOf(request.getParameter("courseId"));		
-		Course course = courseService.getCoursebyId(courseId);
+		Course course = courseService.getCourse(courseId);
 		request.setAttribute("course",course);
-		
 		return "course_overview";
 	}
 	
@@ -77,8 +71,7 @@ public class CourseController {
 		
 		//在此进行业务操作，比如数据库持久化
 		course.setCourseId(123);
-		String s = "redirect:view2/" + course.getCourseId();
-		return s;
+		return "redirect:overView/"+course.getCourseId();
 	}
 	
 	@RequestMapping(value="/upload", method=RequestMethod.GET)
@@ -121,13 +114,13 @@ public class CourseController {
 	
 	@RequestMapping(value="/{courseId}",method=RequestMethod.GET)
 	public @ResponseBody Course getCourseInJson(@PathVariable Integer courseId){
-		return  courseService.getCoursebyId(courseId);
+		return  courseService.getCourse(courseId);
 	}
 	
 	
 	@RequestMapping(value="/jsontype/{courseId}",method=RequestMethod.GET)
 	public ResponseEntity<Course> getCourseInJson2(@PathVariable Integer courseId){
-		Course course =   courseService.getCoursebyId(courseId);		
+		Course course =   courseService.getCourse(courseId);
 		return new ResponseEntity<>(course, HttpStatus.OK);
 	}
 	

@@ -11,7 +11,7 @@ import java.util.List;
 public class CourseServiceImpl implements CourseService {
 
 	@Override
-	public Course getCoursebyId(Integer courseId) {
+	public Course getCourse(Integer courseId) {
 		
 		Course course = new Course();
 		

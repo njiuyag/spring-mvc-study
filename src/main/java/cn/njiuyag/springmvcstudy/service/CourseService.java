@@ -10,7 +10,11 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CourseService {
 
-
-    Course getCoursebyId(Integer courseId);
+    /**
+     * 通过课程id获取课程
+     * @param courseId
+     * @return
+     */
+    Course getCourse(Integer courseId);
 }
 

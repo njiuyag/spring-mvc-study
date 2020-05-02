@@ -14,7 +14,7 @@
 <body>
 	<div id="main">
 		<div class="newcontainer" id="course_intro">
-		  <form name="mainForm" action="<%= request.getContextPath()%>/courses/save" method="post">
+		  <form name="mainForm" action="<%= request.getContextPath()%>/course/save" method="post">
 		    <div>
 		       <span>课程名称:</span><input type="text" id="title" name="title">
 		    </div>

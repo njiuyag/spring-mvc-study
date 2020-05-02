@@ -1,30 +1,35 @@
 # 记录
 
-## DispatcherServlet
+## spring mvc study
 
-## controller
+### DispatcherServlet
 
-## HandlerAdapter
+### controller
 
-## 适配器模式
+### HandlerAdapter
 
-## HandlerInterceptor
+### 适配器模式
+
+### HandlerInterceptor
 
 + preHandle
 + postHandle
 + afterCompletion
 
-## HandlerMapping
+### HandlerMapping
 1. DispatchServlet通过HandlerMapping获取正确的controller
 2. 包装HandlerInterceptor到controller
 
-## HandlerExecutionChain
+### HandlerExecutionChain
 
-## ModelAndView
+### ModelAndView
 
-## ViewResolver
+### ViewResolver
 
-## View
+### View
+
+### Annotation
+RequestParams  PathVariable HttpServletRequest
 
 
 

@@ -31,6 +31,9 @@
 ### Annotation
 RequestParams  PathVariable HttpServletRequest
 
+### 文件上传
+common-fileupload  MultipartHttpServletRequest MultipartFile
+
 
 
 

@@ -10,7 +10,7 @@
         <slf4j.version>1.7.6</slf4j.version>
         <common-lang3.version>3.10</common-lang3.version>
         <junit.version>4.13</junit.version>
-        <spring.version>4.3.13.RELEASE</spring.version>
+        <spring.version>4.3.29.RELEASE</spring.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
